@@ -1,0 +1,76 @@
+{% extends "base2.html" %}
+{% block title %} Word Scramble Game {% endblock %}
+{% block style %}
+<style>
+    body {
+        background-color: #d4ffbd;
+        text-align: center;
+        
+    }
+    .scrambled-word {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h2>Wildlife Word Scramble</h2>
+<h3>Guess the animals</h3>
+<p class="scrambled-word" id="scrambled-word"></p>
+<input type="text" id="user-input" class="form-control w-50 mx-auto" placeholder="Enter your guess...">
+<button class="btn btn-primary mt-3" onclick="checkAnswer()">Submit</button>
+<p id="result" class="mt-3"></p>
+<button class="btn btn-success mt-3" onclick="newWord()">New Word</button>
+<button class="btn btn-success mt-3" onclick="getHint()">Get Hint</button>
+{% endblock %}
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+    crossorigin="anonymous">
+</script>
+<script>
+    const words = [
+        { scrambled: "OKODOMGDRANO", correct: "KOMODO DRAGON" },
+        { scrambled: "RETIG", correct: "TIGER" },
+        { scrambled: "TPLEAHEN", correct: "ELEPHANT" },
+        { scrambled: "COBAR", correct: "COBRA" },
+        { scrambled: "RAGOTUAAN", correct: "ORANGUTAN" },
+        { scrambled: "SIUSTAR", correct: "TARSIUS" },
+        { scrambled: "RAGOTUAAN", correct: "ORANGUTAN" },
+        { scrambled: "RLZADI", correct: "LIZARD" },
+        { scrambled: "PNTHAER", correct: "PANTHER" },
+        { scrambled: "ACKEJL", correct: "JACKAL" },
+        { scrambled: "COUPTOS", correct: "OCTOPUS" },
+        { scrambled: "FERIGAF", correct: "GIRAFFE" },
+        { scrambled: "KAHSR", correct: "SHARK" },
+        { scrambled: "ICOCOARDLE", correct: "CROCODILE"}
+    ]; 
+    let currentWord;
+
+    function newWord() {
+        currentWord = words[Math.floor(Math.random() * words.length)];
+        document.getElementById("scrambled-word").innerText = currentWord.scrambled;
+        document.getElementById("user-input").value = "";
+        document.getElementById("result").innerText = "";
+    }
+
+    function checkAnswer() {
+        const userAnswer = document.getElementById("user-input").value.toUpperCase();
+        if (userAnswer === currentWord.correct) {
+            document.getElementById("result").innerText = "Correct! 🎉";
+        } else {
+            document.getElementById("result").innerText = "Try again! ❌";
+        }
+    }
+
+    function getHint() {
+        const hint = currentWord.correct.slice(0, 2) + "..." + currentWord.correct.slice((currentWord.correct.length-1));
+        document.getElementById("result").innerText = hint;
+    }
+
+    window.onload = newWord;
+</script>
+{% endblock %}

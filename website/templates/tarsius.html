@@ -1,0 +1,266 @@
+{% extends "base2.html" %}
+{% block title %} Tarsius: The Tiny Primate with Big Eyes {% endblock %}
+{% block style %}
+<style>
+    /* 🌿 General Styles */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 🔹 Navbar */
+    .navbar {
+        background: #005f4b;
+        padding: 15px;
+        text-align: left;
+    }
+
+    /* 🔙 Back Button */
+    .back-button {
+        display: inline-block;
+        padding: 10px 15px;
+        color: white;
+        background-color: #28a745;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    .back-button:hover {
+        background-color: #218838;
+    }
+
+    /* 🔹 Article Header */
+    .article-header {
+        background-color: #005f4b;
+        color: white;
+        text-align: center;
+        padding: 30px;
+    }
+
+    /* 🔹 Main Article Container */
+    .article-container {
+        width: 80%;
+        margin: 40px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 🖼️ Image and Text Layout */
+    .article-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* 📸 Image Styling */
+    .image-container {
+        flex: 1;
+        text-align: center;
+    }
+
+    .image-container img {
+        width: 100%;
+        max-width: 400px; /* Adjust image width */
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    /* 📝 Text Content */
+    .article-text {
+        flex: 2;
+    }
+
+    /* 📜 Text Styling */
+    .article-text p {
+        font-size: 1.2em;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* 💬 Blockquote */
+    blockquote {
+        font-style: italic;
+        background: #e0f7e9;
+        padding: 15px;
+        border-left: 5px solid #005f4b;
+        margin: 20px 0;
+    }
+
+    /* 🔥 Floating "Did You Know?" Box */
+    .did-you-know-box {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 250px;
+        background-color: #fff;
+        color: #333;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        display: none;
+        z-index: 1000;
+    }
+
+    /* 🛑 Close Button */
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    /* 💡 Floating Button */
+    .fact-btn {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        background-color: #ffcc00;
+        color: #333;
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .fact-btn:hover {
+        background-color: #ffaa00;
+    }
+
+    /* 📱 Responsive Design */
+    @media (max-width: 768px) {
+        .article-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar">
+    <a href="/articles" class="back-button">⬅ Back to Articles</a>
+</nav>
+
+<header class="article-header">
+    <h1>Tarsius: The Tiny Primate with Big Eyes</h1>
+</header>
+
+<main class="article-container">
+    <div class="article-content">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/articles/tarsiuslong.jpg')}}" alt="Tarsius">
+        </div>
+
+        <div class="article-text">
+            <p><strong>Scientific Name:</strong> Tarsius</p>
+
+            <h2>📍 Habitat & Range</h2>
+            <p>Tarsiers are found in the **forests of Southeast Asia**, particularly in the Philippines, Borneo, and Sumatra. They thrive in **tropical rainforests** and are often spotted in dense vegetation near rivers or streams. These tiny primates prefer areas with plenty of trees, as they are arboreal and rely on branches for movement and shelter.</p>
+
+            <p>Due to their small size and nocturnal nature, tarsiers are difficult to spot in the wild. They are highly territorial and tend to stay within a small home range, rarely venturing far from their preferred habitat.</p>
+        </div>
+    </div>
+
+    <div class="article-text">
+        <h2>👀 Physical Characteristics</h2>
+        <p>Tarsiers are known for their **enormous eyes**, which are each larger than their brain! These eyes are adapted for excellent night vision, allowing them to hunt insects in the dark. They also have **long hind limbs** and **fingers with padded tips**, which help them leap between trees with incredible precision.</p>
+
+        <p>Despite their small size (about **10-15 cm in length**), tarsiers are skilled hunters. They have sharp teeth and claws, which they use to catch and consume insects, small birds, and even bats.</p>
+
+        <h2>🍴 Diet & Hunting</h2>
+        <p>Tarsiers are **carnivorous** and primarily feed on insects, such as crickets, beetles, and grasshoppers. They are also known to prey on small vertebrates like birds, bats, and lizards. Their hunting technique involves **silently stalking their prey** and then pouncing with a sudden leap.</p>
+
+        <p>Interestingly, tarsiers do not drink water directly. Instead, they obtain all the moisture they need from their prey, making them highly adapted to their environment.</p>
+
+        <h2>⚠️ Threats & Conservation</h2>
+        <p>Tarsiers face several threats, including:</p>
+        <ul>
+            <li>**Habitat destruction** due to deforestation and agricultural expansion.</li>
+            <li>**Illegal pet trade**, as their unique appearance makes them a target for collectors.</li>
+            <li>**Climate change**, which disrupts their natural habitat and food sources.</li>
+        </ul>
+
+        <blockquote>"Protecting tarsiers is crucial for preserving the biodiversity of Southeast Asian forests." - Wildlife Conservationist</blockquote>
+
+        <h2>🧬 Reproduction & Life Cycle</h2>
+        <p>Tarsiers have a relatively slow reproductive rate. Females give birth to **a single offspring** after a gestation period of about **6 months**. The baby tarsier is born fully furred and with its eyes open, ready to cling to its mother's belly.</p>
+
+        <p>Young tarsiers are weaned after about **2 months** and become independent shortly after. However, they remain in their parents' territory for several months before venturing out on their own.</p>
+
+        <h2>📜 Fascinating Facts</h2>
+        <ul>
+            <li>Tarsiers can **rotate their heads 180 degrees**, allowing them to spot predators or prey without moving their bodies.</li>
+            <li>They are **strictly nocturnal**, spending their days sleeping in tree hollows or dense foliage.</li>
+            <li>Tarsiers communicate using **ultrasonic calls**, which are inaudible to humans.</li>
+            <li>They are one of the **oldest primate species**, with fossils dating back over 45 million years.</li>
+        </ul>
+
+        <h2>🔍 How You Can Help</h2>
+        <p>There are several ways to **help protect tarsiers** and their habitat:</p>
+        <ul>
+            <li>Support conservation organizations working to preserve Southeast Asian forests.</li>
+            <li>Avoid purchasing products made from endangered species or illegal wildlife trade.</li>
+            <li>Promote **eco-tourism** by visiting tarsier sanctuaries and supporting local communities.</li>
+            <li>Spread awareness about the importance of protecting tarsiers and their habitat.</li>
+        </ul>
+
+        <a href="/articles" class="back-button">⬅ Back to Articles</a>
+    </div>
+</main>
+
+<div class="did-you-know-box" id="factBox">
+    <button class="close-btn" onclick="closeFact()">✖</button>
+    <h3>Did You Know?</h3>
+    <p id="funFact">Tarsiers can rotate their heads 180 degrees!</p>
+</div>
+
+<button class="fact-btn" onclick="openFact()">💡 Fun Fact</button>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    function openFact() {
+        document.getElementById("factBox").style.display = "block";
+        document.getElementById("factBox").style.bottom = "25%";
+    }
+
+    function closeFact() {
+        document.getElementById("factBox").style.display = "none";
+    }
+
+    const facts = [
+        "Tarsiers can rotate their heads 180 degrees!",
+        "They communicate using ultrasonic calls that humans can't hear.",
+        "Tarsiers are one of the oldest primate species, with fossils dating back over 45 million years.",
+        "Their eyes are larger than their brain!",
+        "Tarsiers are strictly nocturnal and sleep during the day.",
+        "They can leap up to 5 meters (16 feet) between trees!"
+    ];
+
+    document.querySelector(".fact-btn").addEventListener("click", function() {
+        document.getElementById("funFact").innerText = facts[Math.floor(Math.random() * facts.length)];
+    });
+</script>
+{% endblock %}

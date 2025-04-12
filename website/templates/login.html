@@ -1,0 +1,27 @@
+{% extends "base1.html" %}
+{% block title %}Login{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container-wrapper">
+    <div class="login-container">
+        <div class="text-start">
+            <button class="btn btn-green" onclick="goBack()">BACK</button>
+        </div>
+        <p class="mb-4">LOGIN</p>
+        <form class="breadth" method="POST" onsubmit="return validateLogin()">
+            <input type="text" id="email" name="email" class="form-control mb-4" placeholder="Enter Email" required>
+            <input type="password" id="password" name="password" class="form-control mb-4" placeholder="Enter Password" required>
+            <div class="d-flex justify-content-between mb-3">
+                <a href="/signup">Don't have an account?</a>
+                <a href="/resetpass">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn btn-green ball">LOGIN</button>
+            <div id="error-message" class="error"></div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

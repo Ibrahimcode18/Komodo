@@ -1,0 +1,167 @@
+{% extends "base2.html" %}
+{% block title %} Komodo Hub {% endblock %}
+{% block style %}
+<style>
+  .feature-icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 0.75rem;
+  }     
+
+  .carousel-item img {
+      max-height: 580px;
+  }
+
+  .write {
+      color: white
+  }
+</style>
+{% endblock %}   
+{% block content %}
+<div class="px-4 pt-5 my-5 text-center border-bottom row">
+    <div class="col-lg-6">
+      <h1 class="display-4 fw-bold text-body-emphasis">Komodo Hub</h1>
+      <p class="lead mb-4">Welcome to our website, where we are on a mission to provide exceptional moving services to customers in the US. As a startup, we believe that moving doesn't have to be stressful or complicated, and we are passionate about making the process as seamless and enjoyable as possible.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <button type="button" class="btn btn-success btn-lg px-4 me-sm-3"  id="funFactButton" data-bs-toggle="popover" data-bs-title="Fun Fact" data-bs-content="#">Get a Fun Fact <img src="{{ url_for('static', filename='images/homePage/emoji-smile.svg')}}"></button>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="container px-5">
+        <img src="{{ url_for('static', filename='images/homePage/image.png')}}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="700" loading="lazy"#>
+      </div>
+    </div>
+</div>
+
+<div class="container " id="featured-3">
+    <h2 class="pb-2 border-bottom">Why is komodo important?</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="{{ url_for('static', filename='images/homePage/bus-front.svg')}}" height="30"/>
+        </div>
+        <h3 class="fs-2 text-body-emphasis">For Schools</h3>
+        <p>The goal is to integrates conservation into the curriculum, providing hands-on learning experiences for students.We have created a hub that 
+          enables interaction between the teachers and students.We offer tools for managing, assessing, and showcasing student contributions to conservation projects while ensuring data privacy.
+        </p>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="{{ url_for('static', filename='images/homePage/briefcase.svg')}}" height="30"/>
+        </div>
+        <h3 class="fs-2 text-body-emphasis">For Local Communities</h3>
+        <p>
+          Empowers community involvement by giving them a platform to report sightings, share knowledge, and participate in conservation programs.
+          We have created a hub that enables interaction between members of a community. We offer tools that increases public awareness and engagement in the protection of local endangered species.
+        </p>
+      </div>
+      <div class="feature col">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+          <img src="{{ url_for('static', filename='images/homePage/chat-square-heart.svg')}}" height="30"/>
+        </div> 
+        <h3 class="fs-2 text-body-emphasis">For Public</h3>
+        <p>
+          Educates citizens about Indonesia’s endangered endemic species and the importance of their conservation.
+          Encourages community-supported initiatives that can help boost conservation efforts nationwide.
+        </p>
+      </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='images/homePage/sumatran-tiger.jpg')}}" class="d-block w-100" alt="picture of a Sumatran tiger">
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="write">Sumatran Tiger</h5>
+              <p class="write">Critically endangered with fewer than 100 individuals remaining, Threats include habitat loss, poaching, and human–wildlife conflict.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/homePage/Javan-rhino.jpg')}}" class="d-block w-100" alt="picture of a Javan Rhinoceros">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="write">Javan Rhinoceros</h5>
+                <p class="write">One of the world's rarest large mammals, with an extremely limited population, 
+                    primarily in Ujung Kulon National Park. Faces severe risks from habitat degradation and disease.
+                </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/homePage/Komodo-dragon.jpg')}}" class="d-block w-100" alt="picture of a Javan Rhinoceros">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="write">Komodo Dragon</h5>
+                <p class="write">
+                  The world’s largest lizard, found only on a few Indonesian islands. 
+                  Despite their fearsome reputation, habitat loss and declining prey populations threaten their survival.
+                </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/homePage/bawean-deer.jpg')}}" class="d-block w-100" alt="picture of a Javan Eagle">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="write">Bawean Deer</h5>
+                <p class="write">
+                  A shy and elusive deer found only on Bawean Island, threatened by habitat destruction.
+                </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/homePage/orangutans.jpg')}}" class="d-block w-100" alt="picture of a Javan Eagle">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="write">Orangutans</h5>
+                <p class="write">
+                  Both Sumatran and Bornean orangutans are critically endangered due to deforestation and the palm oil industry.
+                </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/homePage/anoa.jpg')}}" class="d-block w-100" alt="picture of a Javan Eagle">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="write">Anoa</h5>
+                <p class="write">
+                  Indonesia’s "dwarf buffalo," found in Sulawesi’s forests, is facing severe population decline
+                </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/homePage/tarsius.jpg')}}" class="d-block w-100" alt="picture of a Tarsius">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="write">Tarsius</h5>
+                <p class="write">
+                    A small primate with large eyes, found in limited regions.
+                    Vulnerable to deforestation and habitat disturbance, making them highly susceptible to environmental changes
+                </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/homePage/ccm.jpg')}}" class="d-block w-100" alt="picture of a Celebes Crested Macaque">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="write">Celebes Crested Macaque</h5>
+                <p class="write">
+                  An endangered primate native to Sulawesi.
+                  Threatened by habitat loss, hunting, and human conflict, with a declining population due to these.
+                </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/homePage/Sumatran-Elephant.jpg')}}" class="d-block w-100" alt="picture of a elephant">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="write">Sumatran Elephant</h5>
+                <p class="write">
+                  A subspecies of the Asian elephant, losing its habitat to deforestation and human-wildlife conflict
+                </p>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+    crossorigin="anonymous">
+</script>
+<script src="{{ url_for('static',filename='javascript/homepage.js') }}"></script>
+{% endblock %}
+  

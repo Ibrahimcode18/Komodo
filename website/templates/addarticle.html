@@ -1,0 +1,118 @@
+{% extends "base2.html" %}
+{% block title %} Submit New Article {% endblock %}
+{% block style %}
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 🔹 Navbar */
+    .navbar {
+        background: #005f4b;
+        padding: 15px;
+        text-align: left;
+    }
+
+    /* 🔙 Back Button */
+    .back-button {
+        display: inline-block;
+        padding: 10px 15px;
+        color: white;
+        background-color: #28a745;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    .back-button:hover {
+        background-color: #218838;
+        text-decoration: none;
+        color: white;
+    }
+
+    /* 🔹 Form Container */
+    .form-container {
+        width: 80%;
+        margin: 40px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ✅ Submit Button */
+    .submit-btn {
+        background-color: #005f4b;
+        color: white;
+        font-size: 1.2em;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .submit-btn:hover {
+        background-color: #004030;
+    }
+
+    .tox-statusbar{
+        display: none;
+    }
+    /* 📱 Responsive Design */
+    @media (max-width: 768px) {
+        .form-container {
+            width: 95%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar">
+    <a href="/articles" class="back-button">⬅ Back</a>
+</nav>
+
+<main class="form-container">
+    <h1 class="text-center" style="font-weight: bolder;">SUBMIT A NEW ARTICLE</h2>
+    <p class="text-center">Fill in the details below to submit your article.</p>
+
+    <form action="/articles/addarticle" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="title" class="form-label"><b style="font-size: x-large;">Article Title</b></label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="Enter article title" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><b style="font-size: x-large;">Upload an Image</b></label>
+            <input type="file" id="image" name="image" accept="image/*" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="title" class="form-label"><b style="font-size: x-large;">Description</b></label>
+            <input type="text" id="title" name="description" class="form-control" placeholder="Enter article description (Just a short fact)" required>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label"><b style="font-size: x-large;">Article Content</b></label>
+            <textarea id="content" name="content" class="form-control" rows="6" style="display: inline-flexbox;"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Article</button>
+    </form>
+</main>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='tinymce/js/tinymce/tinymce.min.js') }}"></script>
+<script>
+    tinymce.init({
+        selector: '#content',
+        menubar: true,
+        plugins: 'lists link image',
+        toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image',
+        height: 400 
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

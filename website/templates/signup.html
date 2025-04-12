@@ -1,0 +1,55 @@
+{% extends "base1.html" %}
+{% block title %}Sign Up{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center h-100">
+    <div class="col-md-6 signup-container">
+        <button class="btn btn-success mb-3" onclick="goBack()">BACK</button>
+        <h2 class="text-center">Sign Up</h2>
+        <p class="text-center">Please fill the form to create an account</p>
+        <form id='myForm' method="POST" novalidate>
+            <div class="row mb-3">
+                <div class="col">
+                    <input type="text" class="form-control" name="firstname" placeholder="First name" required>
+                    <div class="invalid-feedback">
+                        uh- ohh you forgot your first name
+                    </div>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="lastName" name="lastname" placeholder="Last name" required>
+                    <div class="invalid-feedback">
+                        Uh-oh! You forgot your last name.
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" name="email" placeholder="Email" required>
+                <div class="invalid-feedback">
+                    please enter a valid email address
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="password1" placeholder="Password" required>
+                <div class="invalid-feedback">
+                    please enter a password
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="password2" placeholder="Confirm Password" required>
+                <div class="invalid-feedback">
+                    please confirm your password
+                </div>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" required>
+                <label class="form-check-label">I accept terms of User & privacy policy</label>
+            </div>
+            <button type="submit" class="btn btn-custom w-100">Sign Up</button>
+        </form>
+        <p class="text-center mt-3">Already have an account? <a href="/login" class="text-white fw-bold">Login</a></p>
+    </div>
+</div>
+{% endblock %}

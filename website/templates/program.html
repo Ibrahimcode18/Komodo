@@ -1,0 +1,58 @@
+{% extends "base2.html" %}
+{% block title %} {{ organization.name }} {% endblock %}
+{% block content %}
+<section class="mt-2 ms-3">
+    <h2 class="fw-bold p-2 mb-2  me-5" style="width: fit-content; font-size:xxx-large;">{{ organization.name }}</h2>
+    <section class="ms-5 mb-3">
+        <a href="/schooladdinfo">
+            <button type="button" class="btn btn-primary rounded-pill me-2 fw-bold" style="background-color: #000000; height: fit-content; border-color :#000000; color: #FFFFFF;">
+                Information
+            </button></a>
+            <a href="/schoollobby">
+                <button type="button" class="btn btn-primary rounded-pill fw-bold" style="background-color: #000000; border-color :#000000; color: #FFFFFF;">
+                    Lobby
+                </button></a>
+        <a href="/schoolcontent">
+            <button type="button" class="btn btn-primary rounded-pill fw-bold" style="background-color: #000000; border-color :#000000; color: #FFFFFF;">
+                Contents
+            </button></a>
+        <button type="button" class="btn btn-primary rounded-pill me-4 fw-bold" style="background-color: #AEFFA3; border-color :#AEFFA3; color: black;">
+            Program
+        </button>
+    </section>
+</section>
+
+<section class="align-items-center" style="width: 50%; margin: auto;">
+    <div class="container my-4">
+        <h3 class="mb-3">Endangered Species Awareness</h3>
+        <div class="ratio ratio-16x9">
+          <iframe 
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allowfullscreen>
+          </iframe>
+        </div>
+    </div>
+
+    <div class="container my-4">
+        <h3 class="mb-3">Newly Discovered Species</h3>
+        <div class="ratio ratio-16x9">
+          <iframe 
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allowfullscreen>
+          </iframe>
+        </div>
+    </div>
+      
+    
+</section>
+{% endblock %}
+
+
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endblock %}

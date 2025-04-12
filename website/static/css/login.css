@@ -1,0 +1,111 @@
+body {
+    background-image: url('/static/images/authentication/login.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+/* ✅ Center the form but allow normal page scroll */
+.container-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
+/* ✅ The login form with transparent background */
+.login-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 50%;
+    color: white;
+    text-align: center;
+}
+
+/* ✅ Heading Text Size */
+p {
+    font-weight: 800;
+    font-size: 3vw;
+}
+
+/* ✅ Button Styling */
+.btn-green {
+    background-color: #00FF00;
+    color: black;
+    font-weight: bold;
+    border: none;
+}
+
+.btn-green:hover {
+    background-color: #00CC00;
+}
+
+/* ✅ Input fields styling */
+.form-control {
+    border-radius: 10px;
+    height: 2.5em;
+    font-size: 1.25rem;
+    padding: 10px;
+}
+
+/* ✅ Reduce the form width on mobile screens */
+.breadth {
+    width: 80%;
+    margin: auto;
+}
+
+/* ✅ Button Styling */
+.ball {
+    width: 40%;
+    font: bold;
+    font-size: 20px;
+    border-radius: 0;
+}
+
+/* ✅ Error Message */
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+/* ✅ Text Links */
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ Responsive Adjustment */
+@media (max-width: 768px) {
+    .login-container {
+        width: 80%;
+        padding: 5vw;
+    }
+
+    .ball {
+        width: 60%;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-container {
+        width: 90%;
+        padding: 6vw;
+    }
+
+    .ball {
+        width: 70%;
+    }
+
+    p {
+        font-size: 6vw;
+    }
+}

@@ -1,0 +1,276 @@
+{% extends "base2.html" %}
+{% block title %} Sumatran Tiger: The Last of Its Kind {% endblock %}
+{% block style %}
+<style>
+    /* 🌿 General Styles */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* 🔹 Navbar */
+    .navbar {
+        background: #005f4b;
+        padding: 15px;
+        text-align: left;
+    }
+    
+    /* 🔙 Back Button */
+    .back-button {
+        display: inline-block;
+        padding: 10px 15px;
+        color: white;
+        background-color: #28a745;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+    
+    .back-button:hover {
+        background-color: #218838;
+    }
+    
+    /* 🔹 Article Header */
+    .article-header {
+        background-color: #005f4b;
+        color: white;
+        text-align: center;
+        padding: 30px;
+    }
+    
+    /* 🔹 Main Article Container */
+    .article-container {
+        width: 80%;
+        margin: 40px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 🔹 Content Wrapper (Article + Sidebar) */
+    .content-wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    
+    /* 📖 Article Content */
+    .article-main {
+        flex: 3;
+    }
+    
+    /* 📖 Full Article Text (Continues Below Sidebar) */
+    .full-article-text {
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    /* 🖼 Image & Text Layout */
+    .sub-article-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    
+    /* 📸 Image Styling */
+    .sub-article-image img{
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+    
+    /* 📝 Text Content */
+    .sub-article-text {
+        flex: 2;
+    }
+    
+    /* 🔹 Sidebar Styling */
+    .sidebar {
+        flex: 1;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 📜 Text Styling */
+    .sub-article-text p, .full-article-text p {
+        font-size: 1.2em;
+        color: #333;
+        line-height: 1.6;
+    }
+    
+    /* 📱 Responsive Design */
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+        }
+    
+        .sidebar {
+            width: 100%;
+            margin-top: 20px;
+        }
+    
+        .sub-article-content {
+            flex-direction: column;
+            text-align: center;
+        }
+    
+        .sub-article-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+    
+        .sub-article-text {
+            text-align: center;
+        }
+    }
+    /* 🔥 Floating "Did You Know?" Box */
+    .did-you-know-box {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 250px;
+        background-color: #fff;
+        color: #333;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        display: none;
+        z-index: 1000;
+    }
+    
+    /* 🛑 Close Button */
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+    }
+    
+    /* 💡 Floating Button */
+    .fact-btn {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        background-color: #ffcc00;
+        color: #333;
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+    
+    .fact-btn:hover {
+        background-color: #ffaa00;
+    }
+    
+    
+</style>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar">
+    <a href="/articles" class="back-button">⬅ Back to Articles</a>
+</nav>
+
+<header class="article-header">
+    <h1>Sumatran Tiger: The Last of Its Kind</h1>
+</header>
+
+<main class="article-container">
+    <div class="content-wrapper">
+        <div class="article-main">
+            <div class="sub-article-content">
+                <div class="sub-article-image">
+                    <img src="{{ url_for('static', filename='images/articles/sumarantigerlong.jpg')}}" alt="Sumatran Tiger">
+                </div>
+
+                <div class="sub-article-text">
+                    <p><strong>Scientific Name:</strong> Panthera tigris sumatrae</p>
+
+                    <h2>📍 Habitat & Range</h2>
+                    <p>Native to Sumatra, Indonesia, Sumatran tigers live in dense rainforests, grasslands, and swampy areas.</p>
+
+                    <h2>🐯 Physical Characteristics</h2>
+                    <p>The smallest of all tiger subspecies, Sumatran tigers have thicker fur and darker stripes, which provide excellent camouflage in dense vegetation.</p>
+                </div>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <h3>Related Articles</h3>
+            <ul>
+                <li><a href="/articles/komodo">🦎 Komodo Dragon</a></li>
+                <li><a href="/articles/javan-rhino">🦏 Javan Rhinoceros</a></li>
+                <li><a href="/articles/javan-eagle">🦅 Javan Eagle</a></li>
+                <li><a href="/articles/macaque">🐵 Celebes Crested Macaque</a></li>
+                <li><a href="/articles/tarsius">🦉 Tarsius</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <div class="full-article-text">
+        <h2>🍖 Diet & Hunting</h2>
+        <p>Sumatran tigers are solitary hunters, preying on deer, wild boar, and monkeys. They are incredibly strong, able to drag prey much heavier than themselves.</p>
+
+        <h2>⚠️ Threats & Conservation</h2>
+        <p>Fewer than 400 Sumatran tigers remain, with deforestation and poaching being the biggest threats.</p>
+
+        <h2>🔍 How You Can Help</h2>
+        <p>Support conservation programs like WWF's Tiger Initiative.</p>
+
+        <a href="/articles" class="back-button">⬅ Back to Articles</a>
+    </div>
+</main>
+
+<!-- Floating "Did You Know?" Pop-Up -->
+<div class="did-you-know-box" id="factBox">
+    <button class="close-btn" onclick="closeFact()">✖</button>
+    <h3>Did You Know?</h3>
+    <p id="funFact">Sumatran tigers are the only tigers that can live in swamps!</p>
+</div>
+
+<button class="fact-btn" onclick="openFact()">💡 Fun Fact</button>
+{% endblock %}
+{% block javascript %}
+<script>
+    function openFact() {
+        document.getElementById("factBox").style.display = "block";
+        document.getElementById("factBox").style.bottom = "25%";
+    }
+
+    function closeFact() {
+        document.getElementById("factBox").style.display = "none";
+    }
+
+    const facts = [
+        "Sumatran tigers have webbed feet, helping them swim.",
+        "They have the darkest fur of all tiger subspecies.",
+        "Sumatran tigers are the smallest of all tiger species.",
+        "They use their whiskers to detect movement in darkness."
+    ];
+
+    document.querySelector(".fact-btn").addEventListener("click", function() {
+        document.getElementById("funFact").innerText = facts[Math.floor(Math.random() * facts.length)];
+    });
+</script>
+{% endblock %}

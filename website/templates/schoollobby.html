@@ -1,0 +1,82 @@
+{% extends "base2.html" %}
+{% block title %} {{ organization.name }} {% endblock %}
+{% block content %}
+<section class="mt-2 ms-3">
+    <h2 class="fw-bold p-2 mb-2  me-5" style="width: fit-content; font-size:xxx-large;">{{ organization.name }}</h2>
+    <section class="ms-5 mb-3">
+        <a href="/schooladdinfo">
+            <button type="button" class="btn btn-primary rounded-pill me-2 fw-bold" style="background-color: #000000; height: fit-content; border-color :#000000; color: #FFFFFF;">
+                Information
+            </button></a>
+        <button type="button" class="btn btn-primary rounded-pill me-4 fw-bold" style="background-color: #AEFFA3; border-color :#AEFFA3; color: black;">
+            Lobby
+        </button>
+        <a href="/schoolcontent">
+            <button type="button" class="btn btn-primary rounded-pill fw-bold" style="background-color: #000000; border-color :#000000; color: #FFFFFF;">
+                Contents
+            </button></a>
+        <a href="/program">
+            <button type="button" class="btn btn-primary rounded-pill fw-bold" style="background-color: #000000; border-color :#000000; color: #FFFFFF;">
+                Programs
+            </button></a>
+    </section>
+</section>
+
+<section class="align-items-center" style="width: 50%; margin: auto;">
+    <section class="form-floating mb-4">
+        <form action="/schoollobby" method="POST">
+            <section class="card p-3 mx-auto" style="max-width: 900px; width: 100%;">
+                <section class="row g-2 align-items-center">
+                    <section class="col-12 col-md-9">
+                        <textarea class="form-control w-100" name="content" placeholder="Share information with everyone" id="floatingTextarea" style="resize: none;" rows="3"></textarea>
+                    </section>
+                    <section class="col-12 col-md-3 text-end">
+                        <button type="submit" class="btn btn-outline-success w-100">Post</button>
+                    </section>
+                </section>
+            </section>
+        </form>
+    </section>
+        
+    {% if information %}
+    {% for info in information %}
+    <section class="card p-3 mb-5" style="background-color: #D9D9D9;">
+        <section class="row align-items-center justify-content-between">
+            
+            <section class="col-auto">
+                <button class="btn btn-success" style="font-weight: bold;" disabled>{{ info.user.firstname[0] }}</button>
+            </section>
+    
+            <section class="col d-flex flex-column">
+                <section class="d-flex align-items-center">
+                    <h6 class="mb-0 fw-bold me-2">{{ info.user.firstname }} {{ info.user.lastname }}</h6>
+                    <p class="mb-0 small text-danger">{{ info.user.role.role_name }}</p>
+                </section>
+                <p class="mb-0 text-muted small">{{ info.date.strftime('%B %d, %Y - %I:%M %p') }}</p>
+            </section>
+    
+            <section class="col-auto">
+                {% if user.role_id == 3 or info.user.id == user.id %}
+                    <form action="{{ url_for('views.delete_info', info_id=info.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?')">
+                        <button type="submit" class="dropdown-item text-danger">&times;</button>
+                    </form>
+                {% endif %}
+            </section>
+        </section>
+        <hr>
+        <section class="card-body">
+            <p>{{ info.content }}</p>
+        </section>
+    </section>
+    {% endfor %}
+    {% else %}
+    <p>There's no information</p>
+    {% endif %}    
+</section>
+{% endblock %}
+
+
+{% block javascript %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endblock %}
+    

@@ -1,0 +1,271 @@
+{% extends "base2.html" %}
+{% block title %} Celebes Crested Macaque: The Social Primate {% endblock %}
+{% block style %}
+<style>
+    /* 🌿 General Styles */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 🔹 Navbar */
+    .navbar {
+        background: #005f4b;
+        padding: 15px;
+        text-align: left;
+    }
+
+    /* 🔙 Back Button */
+    .back-button {
+        display: inline-block;
+        padding: 10px 15px;
+        color: white;
+        background-color: #28a745;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s ease;
+    }
+
+    .back-button:hover {
+        background-color: #218838;
+    }
+
+    /* 🔹 Article Header */
+    .article-header {
+        background-color: #005f4b;
+        color: white;
+        text-align: center;
+        padding: 30px;
+    }
+
+    /* 🔹 Main Article Container */
+    .article-container {
+        width: 80%;
+        margin: 40px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 🖼️ Image and Text Layout */
+    .article-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    /* 📸 Image Styling */
+    .image-container {
+        flex: 1;
+        text-align: center;
+    }
+
+    .image-container img {
+        width: 100%;
+        max-width: 400px; /* Adjust image width */
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    /* 📝 Text Content */
+    .article-text {
+        flex: 2;
+    }
+
+    /* 📜 Text Styling */
+    .article-text p {
+        font-size: 1.2em;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* 💬 Blockquote */
+    blockquote {
+        font-style: italic;
+        background: #e0f7e9;
+        padding: 15px;
+        border-left: 5px solid #005f4b;
+        margin: 20px 0;
+    }
+
+    /* 🔥 Floating "Did You Know?" Box */
+    .did-you-know-box {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 250px;
+        background-color: #fff;
+        color: #333;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        display: none;
+        z-index: 1000;
+    }
+
+    /* 🛑 Close Button */
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    /* 💡 Floating Button */
+    .fact-btn {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        background-color: #ffcc00;
+        color: #333;
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .fact-btn:hover {
+        background-color: #ffaa00;
+    }
+
+    /* 📱 Responsive Design */
+    @media (max-width: 768px) {
+        .article-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar">
+    <a href="/articles" class="back-button">⬅ Back to Articles</a>
+</nav>
+
+<header class="article-header">
+    <h1>Celebes Crested Macaque: The Social Primate</h1>
+</header>
+
+<main class="article-container">
+    <!-- 🔹 Image and Text Layout -->
+    <div class="article-content">
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/articles/ccmlong.jpg')}}" alt="Celebes Crested Macaque">
+        </div>
+
+        <div class="article-text">
+            <p><strong>Scientific Name:</strong> Macaca nigra</p>
+
+            <h2>📍 Habitat & Range</h2>
+            <p>The Celebes Crested Macaque is native to the **island of Sulawesi in Indonesia**. These primates thrive in **tropical rainforests, mangrove swamps, and coastal areas**. They are highly adaptable and can be found in both primary and secondary forests, though they prefer areas with dense vegetation for shelter and foraging.</p>
+
+            <p>Due to habitat destruction, their range has significantly decreased, and they are now confined to fragmented forest patches. Conservation efforts are underway to protect their remaining habitats.</p>
+        </div>
+    </div>
+    
+    <div class="article-text">
+        <h2>🐵 Physical Characteristics</h2>
+        <p>Celebes Crested Macaques are easily recognizable by their **jet-black fur, long muzzle, and distinctive crest of hair** on their head. They have **pinkish skin on their face and rump**, which becomes more pronounced as they age.</p>
+
+        <p>Adults typically weigh between **5 to 10 kg (11 to 22 lbs)** and have a body length of **45 to 60 cm (18 to 24 inches)**. Their long tails, which are not prehensile, add an additional **1 to 2 cm (0.4 to 0.8 inches)** to their length.</p>
+
+        <h2>🍌 Diet & Behavior</h2>
+        <p>These primates are **omnivorous**, with a diet consisting of **fruits, leaves, insects, and small animals**. They are highly social and live in **large groups of up to 100 individuals**, though smaller groups of 20-30 are more common.</p>
+
+        <p>Celebes Crested Macaques are known for their **complex social structures** and **vocal communication**. They use a variety of calls, facial expressions, and body postures to communicate with each other. Grooming plays a significant role in maintaining social bonds within the group.</p>
+
+        <h2>⚠️ Threats & Conservation</h2>
+        <p>Celebes Crested Macaques face several threats, including:</p>
+        <ul>
+            <li>**Habitat destruction** due to deforestation for agriculture and logging.</li>
+            <li>**Hunting for bushmeat**, which is a significant problem in some areas.</li>
+            <li>**Illegal pet trade**, as their unique appearance makes them a target for collectors.</li>
+        </ul>
+
+        <blockquote>"Protecting the Celebes Crested Macaque is essential for preserving the biodiversity of Sulawesi." - Primatologist</blockquote>
+
+        <h2>🧬 Reproduction & Life Cycle</h2>
+        <p>Females give birth to a **single offspring** after a gestation period of about **5 to 6 months**. The young are born with **black fur and pink skin**, and they cling to their mother's belly for the first few weeks of life.</p>
+
+        <p>Young macaques are weaned at around **6 months** and become independent by the age of **1 year**. However, they remain in their natal group for several years, learning social behaviors and survival skills from the adults.</p>
+
+        <h2>📜 Fascinating Facts</h2>
+        <ul>
+            <li>Celebes Crested Macaques are **excellent swimmers** and often forage in water.</li>
+            <li>They are one of the few primate species that **use tools** in the wild, such as rocks to crack open nuts.</li>
+            <li>Their social groups are **matriarchal**, with females holding dominant positions.</li>
+            <li>They are known for their **playful behavior**, which helps young macaques develop social and physical skills.</li>
+        </ul>
+
+        <h2>🔍 How You Can Help</h2>
+        <p>There are several ways to **help protect Celebes Crested Macaques** and their habitat:</p>
+        <ul>
+            <li>Support conservation organizations working to protect Sulawesi's forests.</li>
+            <li>Avoid purchasing products made from endangered species or illegal wildlife trade.</li>
+            <li>Promote **eco-tourism** by visiting Sulawesi and supporting local communities.</li>
+            <li>Spread awareness about the importance of protecting these unique primates.</li>
+        </ul>
+
+        <a href="/articles" class="back-button">⬅ Back to Articles</a>
+    </div>
+</main>
+
+<!-- 🔥 Floating "Did You Know?" Pop-Up -->
+<div class="did-you-know-box" id="factBox">
+    <button class="close-btn" onclick="closeFact()">✖</button>
+    <h3>Did You Know?</h3>
+    <p id="funFact">Celebes Crested Macaques are excellent swimmers!</p>
+</div>
+
+
+<button class="fact-btn" onclick="openFact()">💡 Fun Fact</button>
+{% endblock %}
+    
+{% block javascript %}
+<script>
+    function openFact() {
+        document.getElementById("factBox").style.display = "block";
+        document.getElementById("factBox").style.bottom = "25%";
+    }
+
+    function closeFact() {
+        document.getElementById("factBox").style.display = "none";
+    }
+
+    // Array of fun facts
+    const facts = [
+        "Celebes Crested Macaques are excellent swimmers!",
+        "They use tools like rocks to crack open nuts.",
+        "Their social groups are matriarchal, with females in charge.",
+        "They communicate using a variety of vocalizations and facial expressions.",
+        "Young macaques learn social behaviors through play.",
+        "They are critically endangered due to habitat loss and hunting."
+    ];
+
+    // Display a random fact when the button is clicked
+    document.querySelector(".fact-btn").addEventListener("click", function() {
+        document.getElementById("funFact").innerText = facts[Math.floor(Math.random() * facts.length)];
+    });
+</script>
+{% endblock %}

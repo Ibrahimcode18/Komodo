@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1">
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            crossorigin="anonymous"
+        />
+        <link 
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+            crossorigin="anonymous"
+        >
+        <link rel="stylesheet" href="{{url_for('static',filename='css/navfoot.css')}}">
+        {% block style %}
+        {% endblock %}
+        <title>{% block title %}Home{% endblock %}</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"> <img src="{{ url_for('static', filename='images/base2/kd-icon.jpg')}}"  alt="Komodo Hub brand" height="30"/> Komodo Hub</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav nav-pills me-auto mb-2 mb-lg-0">
+                        <li class="nav-item" >
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/articles">Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/games">Games</a>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Library
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Communities
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for organ in organizations %}
+                                {% if organ.category == 'Community' and organ.name != 'Komodo Hub' %}
+                                <li><a class="dropdown-item" href="{{ url_for('views.communitycont', organization_id = organ.id) }}">{{ organ.name }}</a></li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <div class="container-fluid mt-3 d-flex justify-content-end align-items-center gap-3">
+                            {% if user.is_authenticated %}  
+                            <div class="dropdown">
+                                <div class="profile-icon dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ url_for('static', filename='images/base2/blinkPro.gif')}}" alt="profile picture" style="width: 40px; height: 40px; border-radius: 50%;" />
+                                </div>
+                                <ul class="dropdown-menu dropdown-menu-end mini-profile" aria-labelledby="profileDropdown">
+                                    <li class="px-3 py-2">
+                                        <strong>{{ user.firstname }} {{ user.lastname }}</strong><br>
+                                        <span>john@Komodo.com</span>
+                                        <hr>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    {% if user.role_id == 2 and user.organ_id == 4002 %}
+                                    <li><a class="dropdown-item" href="/addorgan">Add Organization</a></li>
+                                    {% elif user.role_id == 2 and user.organ_id != 4002 %}
+                                    <li><a class="dropdown-item" href="/adduser">Add User</a></li>
+                                    {% endif %}
+                                    {% if user.role_id == 1 or user.role_id == 3 %}
+                                    <li><a class="dropdown-item" href="{{ url_for('views.zoolainfo', organization_id = user.organ_id) }}">Zoola</a></li>
+                                    {% endif %}
+                                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                </ul>
+                            </div>
+                            {% else %} 
+                            <ul class="navbar-nav d-flex flex-row gap-3 mb-0">
+                                <li class="nav-item">
+                                    <a href="/login"><button class="btn btn-success">Login</button></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/signup"><button class="btn btn-success">Sign Up</button></a>
+                                </li>
+                            </ul>
+                            {% endif %}
+                        </div>   
+                    </div>
+                                        
+                </div>
+            </div>
+        </nav>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category,message in messages %}
+                {% if category == 'error' %}
+                    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <div aria-hidden="true">&times;</div>
+                        </button>
+                    </div>
+                {% else %}
+                    <div class="alert alert-success alter-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert">
+                            <div aria-hidden="true">&times;</div>
+                        </button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+            
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+        <!-- <div>
+            {% if user.is_authenticated %}
+            <li><a href="/">Home</a></li>
+            <li><a href="">Nota</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+            {% endif %}
+            
+        </div> -->
+        
+        
+        <footer class="container" style="background-color: #f0f0f0; width: 100%; max-width: 100%; margin: 0; padding: 0;">
+            <div class="row border-top" style="width: 100%; margin: 0; padding: 0;">
+              <div class="col lg-3" >
+                <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+                  <a class="navbar-brand" href="#"> 
+                    <img src="{{ url_for('static', filename='images/base2/kd-icon.jpg')}}" alt="Komodo Hub brand" height="30"/> Komodo Hub
+                  </a>
+                </a>
+                <p class="text-body-secondary">© 2025</p>
+              </div>
+              <div class="col-lg-6" style="display:flex; justify-content: center; align-items: center;">
+                <a href="#"><img src="{{ url_for('static', filename='images/base2/facebook.png')}}"/></a>
+                <a href="#"><img src="{{ url_for('static', filename='images/base2/insta.png')}}"/></a>
+                <a href="#"><img src="{{ url_for('static', filename='images/base2/link.png')}}"/></a>
+              </div>
+              <div class="col-lg-3" style="display: flex; justify-content: space-around; align-items: center;">
+                <a href="/" style="text-decoration: none; color: inherit;">Home</a>
+                <a href="/about" style="text-decoration: none; color: inherit;">About</a>
+                <a href="/contact" style="text-decoration: none; color: inherit;">Report</a>
+              </div>
+              
+            </div>
+        </footer>
+        <!-- <script type ="text/javascript" src="{{ url_for('static', filename='index.js')}}">
+        </script> -->
+        <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    {% block javascript %}{% endblock %}
+    </body>
+</html>
