@@ -20,6 +20,7 @@
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
             crossorigin="anonymous"
         >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="{{url_for('static',filename='css/navfoot.css')}}">
         {% block style %}
         {% endblock %}
@@ -33,9 +34,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav nav nav-pills me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav nav nav-menu nav-pills me-auto mb-2 mb-lg-0">
                         <li class="nav-item" >
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/articles">Articles</a>
@@ -112,7 +113,7 @@
         {% if messages %}
             {% for category,message in messages %}
                 {% if category == 'error' %}
-                    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                    <div class="alert alert-danger alter-dismissable fade show" style="margin-bottom: 0;" role="alert">
                         {{ message }}
                         <button type="button" class="close" data-dismiss="alert">
                             <div aria-hidden="true">&times;</div>
@@ -132,44 +133,41 @@
         {% endwith %}
 
         {% block content %}{% endblock %}
-        <!-- <div>
-            {% if user.is_authenticated %}
-            <li><a href="/">Home</a></li>
-            <li><a href="">Nota</a></li>
-            <li><a href="/logout">Logout</a></li>
-            {% else %}
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Signup</a></li>
-            {% endif %}
-            
-        </div> -->
-        
-        
-        <footer class="container" style="background-color: #f0f0f0; width: 100%; max-width: 100%; margin: 0; padding: 0;">
-            <div class="row border-top" style="width: 100%; margin: 0; padding: 0;">
-              <div class="col lg-3" >
-                <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                  <a class="navbar-brand" href="#"> 
+        <footer class="main-footer">
+            <div class="footer-content"> 
+                <div class="footer-brand">
+                    <!-- <img src="images/komodohublogo.png" alt="Komodo Hub" class="footer-logo"> -->
                     <img src="{{ url_for('static', filename='images/base2/kd-icon.jpg')}}" alt="Komodo Hub brand" height="30"/> Komodo Hub
-                  </a>
-                </a>
-                <p class="text-body-secondary">© 2025</p>
-              </div>
-              <div class="col-lg-6" style="display:flex; justify-content: center; align-items: center;">
-                <a href="#"><img src="{{ url_for('static', filename='images/base2/facebook.png')}}"/></a>
-                <a href="#"><img src="{{ url_for('static', filename='images/base2/insta.png')}}"/></a>
-                <a href="#"><img src="{{ url_for('static', filename='images/base2/link.png')}}"/></a>
-              </div>
-              <div class="col-lg-3" style="display: flex; justify-content: space-around; align-items: center;">
-                <a href="/" style="text-decoration: none; color: inherit;">Home</a>
-                <a href="/about" style="text-decoration: none; color: inherit;">About</a>
-                <a href="/contact" style="text-decoration: none; color: inherit;">Report</a>
-              </div>
-              
+                    <p>Conserving Indonesia's Biodiversity Since 2025</p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="/about">About Us</a>
+                    <a href="/contact">Contact Us</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Get Involved</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2025 Komodo Conservation Initiative. All rights reserved.</p>
             </div>
         </footer>
-        <!-- <script type ="text/javascript" src="{{ url_for('static', filename='index.js')}}">
-        </script> -->
+
         <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
