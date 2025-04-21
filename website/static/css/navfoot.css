@@ -55,6 +55,8 @@ co{
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
+    width: auto;
+    display: inline-block;
 }
 
 .fun-fact-btn:hover {
