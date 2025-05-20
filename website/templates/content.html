@@ -53,8 +53,10 @@
                         </form>
                     </div>
                 </div>
-                {% endif %}
+                {% else %}
                 <h2 class="card-title">{{ article.title }}</h2>
+                {% endif %}
+                
                 <a href="{{ url_for('views.communitycontopen', article_id = article.id) }}" class="btn btn-success">Read More</a>
               </div>
           </div>
